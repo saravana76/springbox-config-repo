@@ -1,7 +1,9 @@
 configserver: true
 bus: true
+---
+spring:
+  profiles: cloud
 eureka:
   instance:
-    leaseRenewalIntervalInSeconds: 10
-    metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${server.port:8080}}
+    hostname: ${vcap.application.uris[0]}
+    nonSecurePort: 80
